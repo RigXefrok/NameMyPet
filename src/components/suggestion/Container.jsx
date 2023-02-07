@@ -98,7 +98,7 @@ const SuggestionsContainer = forwardRef(({}, ref) => {
   })
 
   return (
-    <div className='flex flex-col gap-4 h-full'>
+    <div className='flex flex-col h-full gap-4 2xl:gap-8'>
       {/* characteristics */}
       <Card>
         <div className='min-h-[72px] flex flex-col p-2 relative'>
@@ -138,7 +138,7 @@ const SuggestionsContainer = forwardRef(({}, ref) => {
       </Card>
 
       {/* references */}
-      <div className='flex gap-6'>
+      <div className='flex gap-6 2xl:gap-14'>
         <div className='w-1/2'>
           <Card>
             <div className='min-h-[72px] flex flex-col p-2 relative'>

@@ -28,7 +28,7 @@ const LoadingSection = forwardRef(
           : ''
       const references =
         suggestions.references.length > 0
-          ? `\nIt is important that only three of the generated names include some references of ${suggestions.references.map(
+          ? `\nIt is important that only three of the generated names must be related to some references of ${suggestions.references.map(
               ({ value }, index) => (index === 0 ? value : `, ${value}`)
             )}.`
           : ''
@@ -75,19 +75,17 @@ The list must be like this:
     if (!pet) return
 
     return (
-      <div className='flex flex-col gap-5 h-full w-4/5 items-center justify-center m-auto'>
+      <div className='flex flex-col gap-5 h-full w-4/5 items-center justify-evenly m-auto'>
         <Card>
           <div className='h-fit p-5'>
             <h3 className='text-lg font-semibold select-none h-fit'>
               Se están generando nombres para tu mascota 💖:
             </h3>
             <div className='pl-2 text-neutral-300'>
-              <p className='pt-1'>
-                Mi mascota es {pet.gender === 'male' ? 'un' : 'una'} {pet.name}.
-              </p>
+              <p className='pt-1'>Mi mascota es un {pet.name}.</p>
               {suggestions.characteristics.length > 0 && (
                 <p className='pt-1'>
-                  Mi {pet.name} es{' '}
+                  Las características de mi {pet.name} son{' '}
                   {suggestions.characteristics.map(({ value }, index) =>
                     index === 0 ? value : `, ${value}`
                   )}

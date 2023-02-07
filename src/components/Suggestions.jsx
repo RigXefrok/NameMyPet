@@ -30,12 +30,12 @@ const Suggestions = ({ suggestionContainer }) => {
   return (
     <div className=' w-full h-[70px]'>
       <h3 className='text-lg font-semibold select-none'>
-        ¿Tienes algo que contarnos sobre tu mascota?
+        ¿Tenes algo que contarnos sobre tu mascota?
       </h3>
       <form className='py-1 flex gap-2 z-50'>
         <SuggestionsTypeSelector handleType={updateSuggestionType} />
         <input
-          placeholder='ejemplo: '
+          placeholder='ejemplo: Likes bananas'
           className='w-full rounded-lg p-1.5 bg-section-dark'
           maxLength={30}
           onChange={handleChange}

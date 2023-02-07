@@ -9,8 +9,8 @@ import {
 
 const PetSelector = forwardRef(({}, ref) => {
   const [petSelected, setPetSelected] = useState({
-    name: 'rabbit',
-    gender: 'female',
+    name: 'dog',
+    gender: 'male',
   })
 
   const [isOpen, setIsOpen] = useState(false)
@@ -41,7 +41,7 @@ const PetSelector = forwardRef(({}, ref) => {
 
   return (
     <div className='flex flex-col relative h-[70px]'>
-      <h3 className='text-lg font-semibold select-none'>¿Qué es tú mascota?</h3>
+      <h3 className='text-lg font-semibold select-none'>¿Qué es tu mascota?</h3>
       <div className='flex h-full items-center py-1 gap-2'>
         <div
           onClick={openSelections}

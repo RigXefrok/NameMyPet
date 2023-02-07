@@ -28,11 +28,19 @@ export const INITIAL_SUGGESTIONS = [
     value: 'likes bananas',
   },
   {
+    type: SUGGESTION_TYPES.characteristic,
+    value: 'playful',
+  },
+  {
+    type: SUGGESTION_TYPES.characteristic,
+    value: 'skinny',
+  },
+  {
     type: SUGGESTION_TYPES.reference,
-    value: 'pokemon',
+    value: 'the simpsons',
   },
   {
     type: SUGGESTION_TYPES.similar,
-    value: 'mon',
+    value: 'snowball',
   },
 ]

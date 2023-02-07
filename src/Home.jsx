@@ -63,10 +63,6 @@ function Home() {
 
   const refreshResults = () => {
     goLoading()
-    loadingSectionRef.current.generateNames(
-      petSelectorRef.current.getPet,
-      suggestionContainerRef.current.getSuggestions
-    )
   }
 
   const reset = () => {
@@ -78,7 +74,7 @@ function Home() {
       <Header />
       <main className='h-full w-full flex flex-col pt-14'>
         {/* progress bar */}
-        <div className='w-full h-10 py-6 relative flex gap-8 items-center justify-center z-10 '>
+        <div className='w-full h-10 py-6 relative flex gap-8 items-center justify-center z-10 2xl:h-20'>
           <m.div
             animate={index}
             variants={progress_variants}
@@ -105,7 +101,7 @@ function Home() {
         <div className='basis-full flex w-screen h-full overflow-hidden'>
           <m.div className='flex w-screen' variants={variants} animate={index}>
             <Section>
-              <div className='flex gap-6 w-full z-20 mb-4'>
+              <div className='flex gap-6 w-full z-20 mb-4 2xl:gap-16 2xl:mb-14'>
                 <Card>
                   <PetSelector ref={petSelectorRef} />
                 </Card>
@@ -114,7 +110,7 @@ function Home() {
                 </Card>
               </div>
 
-              <div className='flex w-full h-full gap-8'>
+              <div className='flex w-full h-full'>
                 <div className='basis-full h-full'>
                   <SuggestionsContainer ref={suggestionContainerRef} />
                 </div>
