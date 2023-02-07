@@ -3,7 +3,7 @@ const Header = () => {
     <header className='fixed top-0 w-full h-14 bg-header-dark select-none'>
       <div className='flex h-full items-center'>
         <img
-          src='./src/assets/Logos-02.png'
+          src='./Logos-02.png'
           alt='app logo'
           className='h-full pointer-events-none'
         />
