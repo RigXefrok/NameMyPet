@@ -31,8 +31,8 @@ const SuggestionsContainer = forwardRef(({}, ref) => {
     )
   )
 
-  const [similar, setSimilar] = useState(
-    INITIAL_SUGGESTIONS.filter(({ type }) => type === SUGGESTION_TYPES.similar)
+  const [includes, setIncludes] = useState(
+    INITIAL_SUGGESTIONS.filter(({ type }) => type === SUGGESTION_TYPES.includes)
   )
 
   const removeSuggestion = ({ value, type }) => {
@@ -47,7 +47,7 @@ const SuggestionsContainer = forwardRef(({}, ref) => {
         const newSimilar = similar.filter(
           (suggestion) => suggestion.value !== value
         )
-        setSimilar(newSimilar)
+        setIncludes(newSimilar)
         break
       case 'reference':
         const newReferences = references.filter(
@@ -72,7 +72,7 @@ const SuggestionsContainer = forwardRef(({}, ref) => {
       case SUGGESTION_TYPES.similar:
         if (similar.length >= SUGGESTIONS_LIMITS.similar) return
         if (similar.some(({ value }) => value === newSuggestion.value)) return
-        setSimilar((current) => [...current, newSuggestion])
+        setIncludes((current) => [...current, newSuggestion])
         break
       case SUGGESTION_TYPES.reference:
         if (references.length >= SUGGESTIONS_LIMITS.reference) return
@@ -87,7 +87,7 @@ const SuggestionsContainer = forwardRef(({}, ref) => {
   }
 
   const getSuggestions = () => {
-    return { characteristics, similar, references }
+    return { characteristics, includes, references }
   }
 
   useImperativeHandle(ref, () => {
@@ -181,10 +181,10 @@ const SuggestionsContainer = forwardRef(({}, ref) => {
           <Card>
             <div className='min-h-[72px] flex flex-col p-2 relative'>
               <div className='absolute top-0 right-0'>
-                {similar.length} de {SUGGESTIONS_LIMITS.similar}
+                {includes.length} de {SUGGESTIONS_LIMITS.includes}
               </div>
               <div className='flex gap-2 items-center'>
-                <h4 className='font-medium select-none'>Similitudes</h4>
+                <h4 className='font-medium select-none'>Incluya</h4>
                 <m.div
                   initial={'rest'}
                   animate={'rest'}
@@ -202,7 +202,7 @@ const SuggestionsContainer = forwardRef(({}, ref) => {
                 </m.div>
               </div>
               <ul className='w-full flex flex-wrap gap-2'>
-                {similar.map(({ value, type }) => (
+                {includes.map(({ value, type }) => (
                   <li
                     key={value + type.type}
                     onClick={() => removeSuggestion({ value, type: type.type })}

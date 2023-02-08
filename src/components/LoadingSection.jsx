@@ -17,47 +17,10 @@ const LoadingSection = forwardRef(
       }
     }, [])
 
-    const generatePrompt = (pet, suggestions) => {
-      const newPrompt = `This program generates and returns only one list of nine suggested names for a given pet based on it specie, gender and characteristics.\nMy pet specie is a ${pet.name} and it gender is ${pet.gender}, the names must be for a ${pet.gender} ${pet.name}.`
-
-      const characteristics =
-        suggestions.characteristics.length > 0
-          ? `\nMy pet characteristics are: ${suggestions.characteristics.map(
-              ({ value }, index) => (index === 0 ? value : `, ${value}`)
-            )} and this characteristics must be reflected in the generated names.`
-          : ''
-      const references =
-        suggestions.references.length > 0
-          ? `\nIt is important that only three of the generated names must be related to some references of ${suggestions.references.map(
-              ({ value }, index) => (index === 0 ? value : `, ${value}`)
-            )}.`
-          : ''
-      const similar =
-        suggestions.similar.length > 0
-          ? `\nThe generated names must include something with ${suggestions.similar.map(
-              ({ value }, index) => (index === 0 ? value : `, ${value}`)
-            )}.`
-          : ''
-      const end = `\n---
-The list must be like this:
-1. name
-2. name
-3. name
-4. name
-5. name
-6. name
-7. name
-8. name
-9. name
---`
-      return newPrompt + similar + characteristics + references + end
-    }
-
     const generateNames = async (pet, suggestions) => {
-      const prompt = generatePrompt(pet, suggestions)
       setLoadingState('loading')
       await namerService
-        .getPetNames(prompt)
+        .getPetNames(pet, suggestions)
         .then((data) => updateResults(data))
         .then(() => setLoadingState('unload'))
         .then(goResults)
@@ -99,10 +62,10 @@ The list must be like this:
                   )}
                 </p>
               )}
-              {suggestions.similar.length > 0 && (
+              {suggestions.includes.length > 0 && (
                 <p className='pt-1'>
-                  Quiero que el nombre sea similar a{' '}
-                  {suggestions.similar.map(({ value }, index) =>
+                  Quiero que el nombre sea includes a{' '}
+                  {suggestions.includes.map(({ value }, index) =>
                     index === 0 ? value : `, ${value}`
                   )}
                 </p>

@@ -9,8 +9,8 @@ export const SUGGESTION_TYPES = {
     color: 'bg-suggestion-r',
     border: 'border-suggestion-r',
   },
-  similar: {
-    type: 'similar',
+  includes: {
+    type: 'include',
     color: 'bg-suggestion-s',
     border: 'border-suggestion-s',
   },
@@ -40,7 +40,7 @@ export const INITIAL_SUGGESTIONS = [
     value: 'the simpsons',
   },
   {
-    type: SUGGESTION_TYPES.similar,
+    type: SUGGESTION_TYPES.includes,
     value: 'snowball',
   },
 ]
